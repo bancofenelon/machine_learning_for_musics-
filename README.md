@@ -35,7 +35,7 @@ jupyter notebook GTZAN.ipynb
 ```
 
 ## Structure du Projet
-* `feature_extraction.py` : module simpliste python crée  contenant une fonction responsable de l'extraction de features ( avec Librosa)
+* `features_extraction.py` : module simpliste python crée  contenant une fonction responsable de l'extraction de features ( avec Librosa)
 * `GTZAN.ipynb` : Notebook contenant l'analyse des descripteurs audios, des visualisations et les modèles de prédiction appuyé par des analyses de leurs performances,d'optimisations
 des hyperparamètres pour les modèles et de feature engenering.
 * `Data` : Dossier contenant le dataset GTZAN (fichiers audio et fichiers CSV de features :`features_csv_30_sec`).
