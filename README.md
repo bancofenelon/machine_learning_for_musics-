@@ -49,7 +49,7 @@ jupyter notebook GTZAN.ipynb    # analyse et modèles + prédiction
 
 ## Prochaines étapes (En cours)
 * Optimisation  avancée des hyperparamètres des modèles.
-* Utlisation de données primaires et suffisantes et des résultats pour créer un système de recommandation complet.
+* Utlisation de données primaires et suffisantes et des résultats pour créer un système de recommandation complet et aussi de **répertoire de musique intéligent**.
 
  **Auteur** : [bancofenelon](https://github.com)
 
