@@ -38,41 +38,16 @@ def extraire_features(chemin_fichier):
         features[f'mfcc_{i}_mean'] = float(np.mean(mfccs[i]))
         features[f'mfcc_{i}_std'] = float(np.std(mfccs[i])) # on met a jour features avec les variables 
 
+
     #deux signaux: harmonique / percussif 
     y_harm, y_perc = librosa.effects.hpss(y)
-
-    # Harmonique : contraste spectral -> moyenne par bande et std
-    spectral_contrast = librosa.feature.spectral_contrast(y=y_harm, sr=sr)
-    for i in range(spectral_contrast.shape[0]):
-        features[f'harmony_spectral_contrast_{i}_mean'] = float(np.mean(spectral_contrast[i]))
-        features[f'harmony_spectral_contrast_{i}_std']  = float(np.std(spectral_contrast[i]))
-
-    #Percussif : force des attaques
-    onset_strength = librosa.onset.onset_strength(y=y_perc, sr=sr)
-    features['percept_onset_strength_mean'] = float(np.mean(onset_strength))
-    features['percept_onset_strength_std']  = float(np.std(onset_strength))
+    features['perceptr_std'] = float(np.std(y_perc)) 
+    features['perceptr_mean'] = float(np.mean(y_perc)) 
+    features['harmony_mean'] = float(np.mean(y_harm)) 
+    features["harmony_std"] = float(np.std(y_harm)) 
 
     # Ajout de la taille
     features['length'] = float(librosa.get_duration(y=y, sr=sr))
         
     return features
 
-fic=extraire_features(r"C:\Users\ADMIN\Desktop\new_data\audio_data\classical\classical.00004.wav")
-import pandas 
-df = pandas.DataFrame(list(fic))
-print(df.info)
-
-"""
-
-# --- SAUVEGARDE ET EXPORT ---
-print("\n--- EXTRACTION TERMINÉE ---")
-print("Conversion en DataFrame Pandas et sauvegarde...")
-# Création du DataFrame final
-df = pd.DataFrame(donnees_musiques)
-# Sauvegarde en fichier CSV sans l'index numérique de Pandas
-df.to_csv(fichier_csv_sortie, index=False, encoding='utf-8')
-print(f"Base de données sauvegardée sous : {fichier_csv_sortie}")
-print(f"Dimensions du dataset : {df.shape[0]} lignes, {df.shape[1]} colonnes.")
-print("\nAperçu des 5 premières lignes :")
-print(df.shape)
-df.head()"""
